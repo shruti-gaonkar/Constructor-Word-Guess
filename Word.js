@@ -14,20 +14,19 @@ function Word(word) {
     this.letterArr = [];
 }
 
-Word.prototype.showString = function (letter) {
+Word.prototype.showString = function (letter, guessed) {
     //Letter.guessLetter();
     var letterArr = this.word.split('');
     letterArr.forEach((element, index) => {
         var newLetter = new Letter(element);
         this.guess(newLetter, letter);
-        if (this.letterArr.length > 0) {
-            this.letterArr[index] = newLetter;
+        if (guessed > 0) {
+            if (newLetter.isGuessed) this.letterArr[index] = newLetter;
         } else {
             this.letterArr.push(newLetter);
         }
     });
-    //this.letterArr.push(new Letter(letter));
-    console.log(this.letterArr.join(' '));
+    //console.log(this.letterArr.join(' '));
     var str = this.letterArr.join(' ');
     return str;
 }

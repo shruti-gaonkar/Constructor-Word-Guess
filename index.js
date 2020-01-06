@@ -20,13 +20,8 @@ var askLetterInput = function () {
                 message: "Guess a letter!"
             }
         ]).then(function (answers) {
-            // initializes the variable newProgrammer to be a programmer object which will take
-            // in all of the user's answers to the questions above
-            //var newLetter = new Letter('a');
-            // printInfo method is run to show that the newProgrammer object was successfully created and filled
-            //var val = newLetter.guess(answers.name);
-            newWord.showString(answers.name);
-            //console.log(newLetter + "");
+            var guessedWord = newWord.showString(answers.name, count);
+            console.log(guessedWord);
             count++;
             askLetterInput();
         });
