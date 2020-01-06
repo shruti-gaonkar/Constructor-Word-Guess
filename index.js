@@ -22,7 +22,14 @@ var askLetterInput = function () {
         ]).then(function (answers) {
             var guessedWord = newWord.showString(answers.name, count);
             console.log(guessedWord);
-            count++;
+            if (!guessedWord.includes("_")) {
+                console.log("You got it right! Next Word!");
+                word = getWord();
+                newWord = new Word(word);
+                count = 0;
+            } else {
+                count++;
+            }
             askLetterInput();
         });
     } else {

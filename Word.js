@@ -15,24 +15,26 @@ function Word(word) {
 }
 
 Word.prototype.showString = function (letter, guessed) {
-    //Letter.guessLetter();
     var letterArr = this.word.split('');
+    var msg = "INCORRECT!!!";
     letterArr.forEach((element, index) => {
         var newLetter = new Letter(element);
         this.guess(newLetter, letter);
+        if (newLetter.isGuessed) msg = "CORRECT!!!";
         if (guessed > 0) {
-            if (newLetter.isGuessed) this.letterArr[index] = newLetter;
+            if (newLetter.isGuessed) {
+                this.letterArr[index] = newLetter;
+            }
         } else {
             this.letterArr.push(newLetter);
         }
     });
-    //console.log(this.letterArr.join(' '));
+    console.log(msg);
     var str = this.letterArr.join(' ');
     return str;
 }
 
 Word.prototype.guess = function (letterObj, character) {
-    //var newLetter = new Letter(character);
     letterObj.guess(character);
 }
 
