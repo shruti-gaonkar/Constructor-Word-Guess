@@ -15,13 +15,16 @@ function Word(word) {
 }
 
 Word.prototype.showString = function (letter) {
-
     //Letter.guessLetter();
     var letterArr = this.word.split('');
-    letterArr.forEach(element => {
+    letterArr.forEach((element, index) => {
         var newLetter = new Letter(element);
         this.guess(newLetter, letter);
-        this.letterArr.push(newLetter);
+        if (this.letterArr.length > 0) {
+            this.letterArr[index] = newLetter;
+        } else {
+            this.letterArr.push(newLetter);
+        }
     });
     //this.letterArr.push(new Letter(letter));
     console.log(this.letterArr.join(' '));
@@ -36,7 +39,7 @@ Word.prototype.guess = function (letterObj, character) {
 
 module.exports = Word;
 
-var newWord = new Word('happy');
+/*var newWord = new Word('happy');
 
 inquirer.prompt([
     {
@@ -52,4 +55,4 @@ inquirer.prompt([
     newWord.showString(answers.name);
     //console.log(newLetter + "");
 });
-
+*/
