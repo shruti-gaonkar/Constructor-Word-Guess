@@ -12,12 +12,13 @@ Letter.prototype.toString = function () {
 }
 
 Letter.prototype.guess = function (letterGuessed) {
+    //console.log("Letter guessed:" + letterGuessed + "===" + this.letter);
     if (letterGuessed == this.letter) {
         this.isGuessed = true;
     }
 }
 
-inquirer.prompt([
+/*inquirer.prompt([
     {
         name: "name",
         message: "Guess a letter!"
@@ -27,8 +28,8 @@ inquirer.prompt([
     // in all of the user's answers to the questions above
     var newLetter = new Letter('a');
     // printInfo method is run to show that the newProgrammer object was successfully created and filled
-    var val = newLetter.guessLetter(answers.name);
-    console.log(val);
-});
+    var val = newLetter.guess(answers.name);
+    console.log(newLetter + "");
+});*/
 
 module.exports = Letter;
