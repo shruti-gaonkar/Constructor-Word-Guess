@@ -6,12 +6,12 @@ function Letter(letter) {
     this.placeholder = '_';
 }
 
-Letter.prototype.guessLetter = function (letterGuessed) {
-    this.checkLetter(letterGuessed);
+Letter.prototype.toString = function () {
+    //this.guess(letterGuessed);
     return (this.isGuessed) ? this.letter : this.placeholder;
 }
 
-Letter.prototype.checkLetter = function (letterGuessed) {
+Letter.prototype.guess = function (letterGuessed) {
     if (letterGuessed == this.letter) {
         this.isGuessed = true;
     }
@@ -31,3 +31,4 @@ inquirer.prompt([
     console.log(val);
 });
 
+module.exports = Letter;
