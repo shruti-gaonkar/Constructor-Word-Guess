@@ -15,7 +15,7 @@ var count = 0;
 var noOfGuesses = (resWordArr['word'].length + 4);
 
 var askLetterInput = function () {
-    console.log(wordArr.length);
+    //console.log(wordArr.length);
     if (wordArr.length > 0) {
         inquirer.prompt([
             {
@@ -30,8 +30,12 @@ var askLetterInput = function () {
             }
             var guessedWord = newWord.showString(answers.name, count, noOfGuesses);
             console.log(guessedWord);
-            if (!guessedWord.includes("_")) {
-                console.log("You got it right! Next Word!");
+            if (!guessedWord.includes("_") || noOfGuesses < 1) {
+                if (noOfGuesses < 1) {
+                    console.log("Oops!! No guesses remaining. Next Word!");
+                } else {
+                    console.log("You got it right! Next Word!");
+                }
                 var resWordArr = guessedLettersArr = [];
                 resWordArr = getWord();
                 newWord = new Word(resWordArr['word']);
