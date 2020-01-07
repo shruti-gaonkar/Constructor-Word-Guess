@@ -21,7 +21,12 @@ var askLetterInput = function () {
         inquirer.prompt([
             {
                 name: "name",
-                message: "Guess a letter!"
+                message: "Guess a letter!",
+                validate: function validateInput(name) {
+                    if (!name.match(/^[a-zA-Z]+$/)) {
+                        return 'Only alphabets are allowed';
+                    }
+                }
             }
         ]).then(function (answers) {
             var newKeyPressed = false;
