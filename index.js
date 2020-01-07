@@ -15,7 +15,8 @@ var count = 0;
 var noOfGuesses = (resWordArr['word'].length + 4);
 
 var askLetterInput = function () {
-    //console.log(wordArr.length);
+    console.log(wordArr.length);
+    console.log(wordArr);
     if (wordArr.length > 0) {
         inquirer.prompt([
             {
@@ -36,12 +37,15 @@ var askLetterInput = function () {
                 } else {
                     console.log("You got it right! Next Word!");
                 }
-                var resWordArr = guessedLettersArr = [];
-                resWordArr = getWord();
-                newWord = new Word(resWordArr['word']);
-                count = 0;
-                noOfGuesses = resWordArr['word'].length * 2;
                 wordArr.splice(resWordArr['word_position'], 1);
+
+                if (wordArr.length > 0) {
+                    resWordArr = guessedLettersArr = [];
+                    resWordArr = getWord();
+                    newWord = new Word(resWordArr['word']);
+                    count = 0;
+                    noOfGuesses = resWordArr['word'].length * 2;
+                }
             } else {
                 count++;
             }

@@ -2,14 +2,6 @@ var Letter = require("./Letter.js");
 var inquirer = require("inquirer");
 
 function Word(word) {
-    /*var len = word.length;
-    this.letterArr = {
-        '_',
-        '_'
-    };
-    array.forEach(element => {
-        
-    });*/
     this.word = word;
     this.letterArr = [];
 }
@@ -49,12 +41,6 @@ inquirer.prompt([
         message: "Guess a letter!"
     }
 ]).then(function (answers) {
-    // initializes the variable newProgrammer to be a programmer object which will take
-    // in all of the user's answers to the questions above
-    //var newLetter = new Letter('a');
-    // printInfo method is run to show that the newProgrammer object was successfully created and filled
-    //var val = newLetter.guess(answers.name);
     newWord.showString(answers.name);
-    //console.log(newLetter + "");
 });
 */
