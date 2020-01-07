@@ -2,7 +2,7 @@
 
 ### File
 
-* [`constructor-word-guess`](Constructor-Word-Guess/index.js)
+* [`constructor-word-guess`](Constructor-Word-Guess/blob/master/index.js)
 
 ### Technologies
 Node, Javascript
@@ -35,3 +35,5 @@ A Word Guess command-line game using constructor functions.
     * Messages are displayed accordingly
 
     * The game automatically chooses another word and makes the user play it.
+
+8. The game also validates the user input to allow only alphabets.
