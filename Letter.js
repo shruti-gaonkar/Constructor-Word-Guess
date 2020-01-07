@@ -7,12 +7,12 @@ function Letter(letter) {
 }
 
 Letter.prototype.toString = function () {
-    //this.guess(letterGuessed);
+    if (this.letter == " ") return " ";
+
     return (this.isGuessed) ? this.letter : this.placeholder;
 }
 
 Letter.prototype.guess = function (letterGuessed) {
-    //console.log("Letter guessed:" + letterGuessed + "===" + this.letter);
     if (letterGuessed == this.letter) {
         this.isGuessed = true;
     }
