@@ -3,10 +3,11 @@ var inquirer = require("inquirer");
 
 var wordArr = [];
 
-wordArr.push("happy",
-    "happy face",
-    "angry",
-    "sad");
+wordArr.push("cow",
+    "hippo",
+    "guinea pig",
+    "sheep",
+    "monkey");
 
 var resWordArr = guessedLettersArr = [];
 resWordArr = getWord();
