@@ -4,10 +4,11 @@ var inquirer = require("inquirer");
 var wordArr = [];
 
 wordArr.push("happy",
+    "happy face",
     "angry",
     "sad");
 
-var resWordArr = [];
+var resWordArr = guessedLettersArr = [];
 resWordArr = getWord();
 var newWord = new Word(resWordArr['word']);
 var count = 0;
@@ -22,11 +23,16 @@ var askLetterInput = function () {
                 message: "Guess a letter!"
             }
         ]).then(function (answers) {
+            var newKeyPressed = false;
+            if (!guessedLettersArr.includes(answers.name)) {
+                guessedLettersArr.push(answers.name);
+                newKeyPressed = true;
+            }
             var guessedWord = newWord.showString(answers.name, count, noOfGuesses);
             console.log(guessedWord);
             if (!guessedWord.includes("_")) {
                 console.log("You got it right! Next Word!");
-                var resWordArr = [];
+                var resWordArr = guessedLettersArr = [];
                 resWordArr = getWord();
                 newWord = new Word(resWordArr['word']);
                 count = 0;
@@ -35,8 +41,14 @@ var askLetterInput = function () {
             } else {
                 count++;
             }
+
+            if (newKeyPressed) {
+                noOfGuesses--;
+            } else {
+                console.log("'" + answers.name + "' is already guessed. Please try some different letter.")
+            }
+
             askLetterInput();
-            noOfGuesses--;
         });
     } else {
         console.log("Game Over!!");
