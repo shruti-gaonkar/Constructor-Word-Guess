@@ -15,8 +15,6 @@ var count = 0;
 var noOfGuesses = (resWordArr['word'].length + 4);
 
 var askLetterInput = function () {
-    console.log(wordArr.length);
-    console.log(wordArr);
     if (wordArr.length > 0) {
         inquirer.prompt([
             {
@@ -26,6 +24,7 @@ var askLetterInput = function () {
                     if (!name.match(/^[a-zA-Z]+$/)) {
                         return 'Only alphabets are allowed';
                     }
+                    return name !== '';
                 }
             }
         ]).then(function (answers) {
@@ -34,17 +33,30 @@ var askLetterInput = function () {
                 guessedLettersArr.push(answers.name);
                 newKeyPressed = true;
             }
-            var guessedWord = newWord.showString(answers.name, count, noOfGuesses);
-            console.log(guessedWord);
+            var guessedArr = [];
+            guessedArr = newWord.showString(answers.name, count);
+
+            var guessedWord = guessedArr['str'];
+            console.log('\n' + guessedWord);
+            if (!newKeyPressed) {
+                console.log("\n\n'" + answers.name + "' is already guessed. Please try some different letter.");
+            } else if (guessedArr['guessedFlag']) {
+                console.log('\x1b[32m', '\n\nCORRECT!!!\n');
+            } else {
+                console.log('\x1b[31m', '\n\nINCORRECT!!!');
+                console.log('\x1b[37m', `\n${noOfGuesses} guesses remaining!!!\n`);
+            }
+
             if (!guessedWord.includes("_") || noOfGuesses < 1) {
                 if (noOfGuesses < 1) {
-                    console.log("Oops!! No guesses remaining. Next Word!");
+                    console.log('\x1b[37m', "\nOops!! No guesses remaining.");
                 } else {
-                    console.log("You got it right! Next Word!");
+                    console.log('\x1b[37m', "\nYou got it right!");
                 }
                 wordArr.splice(resWordArr['word_position'], 1);
 
                 if (wordArr.length > 0) {
+                    console.log('\x1b[37m', 'Next Word!\n');
                     resWordArr = guessedLettersArr = [];
                     resWordArr = getWord();
                     newWord = new Word(resWordArr['word']);
@@ -57,14 +69,12 @@ var askLetterInput = function () {
 
             if (newKeyPressed) {
                 noOfGuesses--;
-            } else {
-                console.log("'" + answers.name + "' is already guessed. Please try some different letter.")
             }
 
             askLetterInput();
         });
     } else {
-        console.log("Game Over!!");
+        console.log("\n\nGame Over!!");
     }
 }
 

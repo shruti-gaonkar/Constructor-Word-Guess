@@ -6,14 +6,15 @@ function Word(word) {
     this.letterArr = [];
 }
 
-Word.prototype.showString = function (letter, guessed, noOfGuesses) {
+Word.prototype.showString = function (letter, guessed) {
     var letterArr = this.word.split('');
-    var msg = "INCORRECT!!!";
-    msg += `${noOfGuesses} guesses remaining`;
+    var guessedFlag = false;
     letterArr.forEach((element, index) => {
         var newLetter = new Letter(element);
         this.guess(newLetter, letter);
-        if (newLetter.isGuessed) msg = "CORRECT!!!";
+        if (newLetter.isGuessed) {
+            guessedFlag = true;
+        }
         if (guessed > 0) {
             if (newLetter.isGuessed) {
                 this.letterArr[index] = newLetter;
@@ -22,9 +23,11 @@ Word.prototype.showString = function (letter, guessed, noOfGuesses) {
             this.letterArr.push(newLetter);
         }
     });
-    console.log(msg);
     var str = this.letterArr.join(' ');
-    return str;
+    var returnArr = [];
+    returnArr['str'] = str;
+    returnArr['guessedFlag'] = guessedFlag;
+    return returnArr;
 }
 
 Word.prototype.guess = function (letterObj, character) {
