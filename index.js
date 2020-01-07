@@ -7,35 +7,39 @@ wordArr.push("happy",
     "angry",
     "sad");
 
-var word = getWord();
-var newWord = new Word(word);
+var resWordArr = [];
+resWordArr = getWord();
+var newWord = new Word(resWordArr['word']);
 var count = 0;
-var len = word.length * 2;
+var noOfGuesses = (resWordArr['word'].length + 4);
 
 var askLetterInput = function () {
-    if (count < len) {
+    console.log(wordArr.length);
+    if (wordArr.length > 0) {
         inquirer.prompt([
             {
                 name: "name",
                 message: "Guess a letter!"
             }
         ]).then(function (answers) {
-            var guessedWord = newWord.showString(answers.name, count);
+            var guessedWord = newWord.showString(answers.name, count, noOfGuesses);
             console.log(guessedWord);
             if (!guessedWord.includes("_")) {
                 console.log("You got it right! Next Word!");
-                word = getWord();
-                newWord = new Word(word);
+                var resWordArr = [];
+                resWordArr = getWord();
+                newWord = new Word(resWordArr['word']);
                 count = 0;
+                noOfGuesses = resWordArr['word'].length * 2;
+                wordArr.splice(resWordArr['word_position'], 1);
             } else {
                 count++;
             }
             askLetterInput();
+            noOfGuesses--;
         });
     } else {
-        word = getWord();
-        newWord = new Word(word);
-        count = 0;
+        console.log("Game Over!!");
     }
 }
 
@@ -45,9 +49,10 @@ function getWord() {
     var word_position = Math.floor(Math.random() * wordArr.length);
     var word = wordArr[word_position];
     word = word.toLowerCase();
-    //console.log(this.word);
     /* remove the word displayed in the game from the global array 
     so that it is not played again */
-    wordArr.splice(word_position, 1);
-    return word;
+    var returnArr = [];
+    returnArr['word'] = word;
+    returnArr['word_position'] = word_position;
+    return returnArr;
 }

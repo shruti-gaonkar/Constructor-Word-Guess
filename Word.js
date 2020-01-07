@@ -14,9 +14,10 @@ function Word(word) {
     this.letterArr = [];
 }
 
-Word.prototype.showString = function (letter, guessed) {
+Word.prototype.showString = function (letter, guessed, noOfGuesses) {
     var letterArr = this.word.split('');
     var msg = "INCORRECT!!!";
+    msg += `${noOfGuesses} guesses remaining`;
     letterArr.forEach((element, index) => {
         var newLetter = new Letter(element);
         this.guess(newLetter, letter);
