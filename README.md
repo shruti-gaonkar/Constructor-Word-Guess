@@ -10,7 +10,10 @@ Node, Javascript
 ### Description
 A Word Guess command-line game using constructor functions.
 
-1. Link: https://github.com/shruti-gaonkar/Constructor-Word-Guess
+1. Link: 
+    * Repo Link: https://github.com/shruti-gaonkar/Constructor-Word-Guess
+
+    * Gif Link: https://media.giphy.com/media/MXXPYGxP5rS5ObniH8/giphy.gif
 
 2. In this game the player has to guess the names of animals.
 
@@ -37,3 +40,5 @@ A Word Guess command-line game using constructor functions.
     * The game automatically chooses another word and makes the user play it.
 
 8. The game also validates the user input to allow only alphabets.
+
+    ![Validation Screenshot](assets/images/validation.png)
