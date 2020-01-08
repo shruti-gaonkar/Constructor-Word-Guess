@@ -41,4 +41,4 @@ A Word Guess command-line game using constructor functions.
 
 8. The game also validates the user input to allow only alphabets.
 
-    ![Validation Screenshot](assets/images/validation.png)
+    ![Validation Screenshot](/assets/images/validation.png)
