@@ -29,7 +29,11 @@ A Word Guess command-line game using constructor functions.
 
    * Word with spaces are also used in the game.
 
+![Word with spaces](assets/images/screenshots/gp_guess.png)
+
 5. If player guesses same letter again, a message is displayed to enter some other letter.
+
+![Already Guessed Word](assets/images/screenshots/already_guessed.png)
 
 6. The game shows number of guesses remaining for the player.
 
@@ -37,7 +41,14 @@ A Word Guess command-line game using constructor functions.
 
     * Messages are displayed accordingly
 
+    ![Incorrect](assets/images/screenshots/gp_guess_letter_incorrect.png)
+
+    ![Correct](assets/images/screenshots/hippo_guess_correct1.png)
+
     * The game automatically chooses another word and makes the user play it.
+
+    ![Next Word](assets/images/screenshots/cow.png)
+
 
 8. The game also validates the user input to allow only alphabets.
 
