@@ -49,7 +49,7 @@ var askLetterInput = function () {
             }
 
             if (!guessedWord.includes("_") || noOfGuesses < 1) {
-                if (noOfGuesses < 1) {
+                if (noOfGuesses < 1 && !guessedArr['guessedFlag']) {
                     console.log('\x1b[37m', "\nOops!! No guesses remaining.");
                 } else {
                     console.log('\x1b[37m', "\nYou got it right!");
